@@ -29,7 +29,9 @@
 /*
   3. Allow percentage-based heights in the application
 */
-html,
+html {
+  height: 100%;
+}
 body {
   height: 100%;
 }
@@ -73,6 +75,12 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  row-gap: 1fr;
 }
 
 main {
@@ -145,7 +153,8 @@ main {
   bottom: 12%;
 }
 
-.main-content {
+.main-content,
+.thank-you {
   padding-inline: 2vh;
 }
 form {
@@ -194,7 +203,7 @@ input::placeholder {
   width: 100%;
 }
 
-form .btn {
+.btn {
   margin-top: 0.5rem;
   border: none;
   color: var(--clr-neutral-100);
@@ -204,7 +213,25 @@ form .btn {
 }
 
 footer {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
+  margin-top: 5rem;
+}
+
+.thank-you {
+  display: grid;
+  gap: 1rem;
+  justify-items: center;
+  display: none;
+}
+
+.thank-you > h2 {
+  text-transform: uppercase;
+  color: var(--clr-neutral-800);
+  font-weight: var(--fw-medium);
+  letter-spacing: 5px;
+}
+.thank-you > p {
+  color: var(--clr-neutral-300);
+}
+.thank-you > .btn {
+  justify-self: stretch;
 }
