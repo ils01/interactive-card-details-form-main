@@ -1,51 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Interactive card details form</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | Interactive card details form</title>
 
-  0000 0000 0000 0000
-  Jane Appleseed
-  00/00
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
 
-  000
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="cover">
+        <div class="cover__card card--back">
+          <img src="./images/bg-card-back.png" alt="" />
+          <p class="card--back__cvc fs-small">000</p>
+        </div>
+        <div class="cover__card card--front">
+          <img src="/images/bg-card-front.png" alt="" />
+          <img class="card--front__logo" src="./images/card-logo.svg" alt="" />
+          <p class="card--front__num">0000 0000 0000 0000</p>
+          <div class="card--front__lower fs-small">
+            <p class="lower__name">Jane Appleseed</p>
+            <p class="lower__exp">00/00</p>
+          </div>
+        </div>
+      </div>
+      <div class="main-content">
+        <form action="">
+          <div>
+            <label for="name">Cardholder Name</label>
+            <input
+              id="name"
+              type="text"
+              placeholder="e.g. Jane Appleseed"
+              required
+            />
+          </div>
+          <div>
+            <label for="card-num">Card Number</label>
+            <input
+              id="card-num"
+              type="number"
+              placeholder="e.g. 1234 5678 9123 0000"
+              required
+            />
+          </div>
 
-  Cardholder Name
-  e.g. Jane Appleseed
-
-  Card Number
-  e.g. 1234 5678 9123 0000
-
-  Exp. Date (MM/YY)
-  MM
-  YY
-
-  CVC
-  e.g. 123
-
-  Confirm
-
-  <!-- Completed state start -->
-
-  Thank you!
-  We've added your card details
-  Continue
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+          <div id="form__lower-data">
+            <div class="form__lower-item">
+              <label for="exp-date">Exp. Date (MM/YY)</label>
+              <div>
+                <label for="exp-month"></label>
+                <input id="exp-month" type="number" placeholder="MM" required />
+                <label for="exp-year"></label>
+                <input id="exp-year" placeholder="YY" required maxlength="2" />
+              </div>
+            </div>
+            <div class="form__lower-item">
+              <label for="cvc">CVC</label>
+              <input type="number" placeholder="e.g. 123" required />
+            </div>
+          </div>
+          <button class="btn" type="submit">Confirm</button>
+        </form>
+      </div>
+    </main>
+    <footer>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Your Name Here</a>.
+      </div>
+    </footer>
+  </body>
 </html>
