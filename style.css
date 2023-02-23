@@ -143,7 +143,7 @@ main {
 .card--front__num {
   position: absolute;
   bottom: 30%;
-  font-size: min(5vw, 1.15rem);
+  font-size: min(5vw, 1rem);
   letter-spacing: 2px;
 }
 .card--front__lower {
@@ -180,6 +180,10 @@ input {
   padding-left: 0.8em;
   border: 1px solid var(--clr-neutral-200);
   border-radius: 0.5rem;
+  transition: all 0.25s ease;
+}
+input:hover {
+  cursor: pointer;
 }
 input::placeholder {
   color: var(--clr-neutral-200);
@@ -234,6 +238,16 @@ input:invalid {
   background-color: var(--clr-neutral-800);
   border-radius: 0.5rem;
   padding-block: 0.75rem;
+  transition: all 0.1s ease;
+}
+
+.btn:hover {
+  -webkit-box-shadow: inset 0px 0px 0px 2px var(--clr-neutral-800);
+  -moz-box-shadow: inset 0px 0px 0px 2px var(--clr-neutral-800);
+  box-shadow: inset 0px 0px 0px 2px var(--clr-neutral-800);
+  color: var(--clr-neutral-800);
+  background-color: var(--clr-neutral-100);
+  cursor: pointer;
 }
 
 footer {
