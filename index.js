@@ -3,6 +3,48 @@ const mainContent = document.querySelector(".main-content");
 const form = document.querySelector("form");
 const confirm = form.querySelector(".btn");
 
+const imgName = document.querySelector(".lower__name");
+const inputName = document.getElementById("name");
+
+const imgCardNum = document.querySelector(".card--front__num");
+const inputCardNum = document.getElementById("card-num");
+
+const imgExpMonth = document.querySelector(".exp-month");
+const inputExpMonth = document.getElementById("exp-month");
+
+const imgExpYear = document.querySelector(".exp-year");
+const inputExpYear = document.getElementById("exp-year");
+
+const imgCVC = document.querySelector(".card--back__cvc");
+const inputCVC = document.getElementById("cvc");
+
+function updateLive(liveElt, defaultValue) {
+  if (this.value) liveElt.textContent = this.value;
+  else liveElt.textContent = defaultValue;
+}
+
+inputName.addEventListener(
+  "input",
+  updateLive.bind(inputName, imgName, "Jane Appleseed")
+);
+
+inputCardNum.addEventListener(
+  "input",
+  updateLive.bind(inputCardNum, imgCardNum, "0000 0000 0000 0000")
+);
+
+inputExpMonth.addEventListener(
+  "input",
+  updateLive.bind(inputExpMonth, imgExpMonth, "00")
+);
+
+inputExpYear.addEventListener(
+  "input",
+  updateLive.bind(inputExpYear, imgExpYear, "00")
+);
+
+inputCVC.addEventListener("input", updateLive.bind(inputCVC, imgCVC, "000"));
+
 confirm.addEventListener("click", function () {
   let checkBlankRes = checkBlank();
   let checkNameRes = checkName();
@@ -22,12 +64,6 @@ confirm.addEventListener("click", function () {
     mainContent.style.display = "none";
     thankYou.style.display = "grid";
   }
-  // console.log(checkBlank());
-  // console.log(checkName());
-  // console.log(checkCardNumber());
-  // console.log(checkExpMonth());
-  // console.log(checkExpYear());
-  // console.log(checkCVC());
 
   function checkBlank() {
     let flag = false;
@@ -47,48 +83,44 @@ confirm.addEventListener("click", function () {
     return flag;
   }
   function checkName() {
-    const nameElt = document.getElementById("name");
-    const name = nameElt.value;
+    const name = inputName.value;
     const notification = document.querySelector("#name + .notification");
     if (name.length > 0 && name.length < 6) {
-      nameElt.setCustomValidity(" ");
+      inputName.setCustomValidity(" ");
       notification.textContent = "Name is too short (at least 6 characters)";
       return false;
     }
     return true;
   }
   function checkCardNumber() {
-    const cardNumberElt = document.getElementById("card-num");
-    const cardNumber = cardNumberElt.value;
+    const cardNumber = inputCardNum.value;
     const notification = document.querySelector("#card-num + .notification");
     if (cardNumber.match(/[^0-9]/)) {
-      cardNumberElt.setCustomValidity(" ");
+      inputCardNum.setCustomValidity(" ");
       notification.textContent = "Wrong format, numbers only";
       return false;
     } else if (cardNumber.length > 0 && cardNumber.length < 16) {
-      cardNumberElt.setCustomValidity(" ");
+      inputCardNum.setCustomValidity(" ");
       notification.textContent = "At least 16 characters";
       return false;
     }
     return true;
   }
   function checkExpMonth() {
-    const monthElt = document.getElementById("exp-month");
-    const month = Number(monthElt.value);
+    const month = Number(inputExpMonth.value);
     const notification = document.querySelector("#exp-month + .notification");
     if (month != 0 && (month < 1 || month > 12)) {
-      monthElt.setCustomValidity(" ");
+      inputExpMonth.setCustomValidity(" ");
       notification.textContent = "Wrong month";
       return false;
     }
     if (month != 0 && month < 10) {
-      monthElt.value = `0${month}`;
+      inputExpMonth.value = `0${month}`;
     }
     return true;
   }
   function checkExpYear() {
-    const yearElt = document.getElementById("exp-year");
-    const year = Number(yearElt.value);
+    const year = Number(inputExpYear.value);
     const notification = document.querySelector("#exp-year + .notification");
     let currYear = new Date().getFullYear().toString();
     if (
@@ -96,21 +128,20 @@ confirm.addEventListener("click", function () {
       (year < Number(currYear.substring(currYear.length - 2)) ||
         year > ((Number(currYear) % 100) + 20) % 100)
     ) {
-      yearElt.setCustomValidity(" ");
+      inputExpYear.setCustomValidity(" ");
       notification.textContent = "Wrong year";
       return false;
     }
-    if (yearElt.value != "" && year < 10) {
-      yearElt.value = `0${year}`;
+    if (inputExpYear.value != "" && year < 10) {
+      inputExpYear.value = `0${year}`;
     }
     return true;
   }
   function checkCVC() {
-    const cvcElt = document.getElementById("cvc");
-    const cvc = Number(cvcElt.value);
+    const cvc = Number(inputCVC.value);
     const notification = document.querySelector("#cvc + .notification");
     if (cvc != 0 && (cvc < 100 || cvc > 999)) {
-      cvcElt.setCustomValidity(" ");
+      inputCVC.setCustomValidity(" ");
       notification.textContent = "Wrong format";
       return false;
     }
