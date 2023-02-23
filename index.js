@@ -95,7 +95,7 @@ confirm.addEventListener("click", function () {
   function checkCardNumber() {
     const cardNumber = inputCardNum.value;
     const notification = document.querySelector("#card-num + .notification");
-    if (cardNumber.match(/[^0-9]/)) {
+    if (cardNumber.match(/[^0-9\s]/)) {
       inputCardNum.setCustomValidity(" ");
       notification.textContent = "Wrong format, numbers only";
       return false;
